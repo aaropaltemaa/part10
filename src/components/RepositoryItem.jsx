@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet, Button, Linking } from "react-native";
 import Text from "./Text";
 
 const styles = StyleSheet.create({
@@ -34,7 +34,7 @@ const Avatar = ({ item }) => {
     />
   );
 };
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ item, showGitHubButton }) => {
   const formatCount = (count) => {
     if (count < 1000) {
       return count.toString();
@@ -65,6 +65,14 @@ const RepositoryItem = ({ item }) => {
         <Text fontWeight="bold"> {item.reviewCount} Reviews</Text>
         <Text fontWeight="bold"> {item.ratingAverage} Rating</Text>
       </View>
+      {showGitHubButton && item.url && (
+        <View style={{ marginTop: 16 }}>
+          <Button
+            title="Open in GitHub"
+            onPress={() => Linking.openURL(item.url)}
+          />
+        </View>
+      )}
     </View>
   );
 };

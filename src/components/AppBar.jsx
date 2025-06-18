@@ -52,6 +52,27 @@ const AppBar = () => {
             Repositories
           </Text>
         </Link>
+        {isSignedIn && (
+          <Link to="/create-review" component={Pressable} style={styles.link}>
+            <Text color="textSecondary" fontWeight="bold" fontSize="subheading">
+              Create a review
+            </Text>
+          </Link>
+        )}
+        {isSignedIn && (
+          <Link to="/my-reviews" component={Pressable} style={styles.link}>
+            <Text color="textSecondary" fontWeight="bold" fontSize="subheading">
+              My reviews
+            </Text>
+          </Link>
+        )}
+        {!isSignedIn && (
+          <Link to="/signup" component={Pressable} style={styles.link}>
+            <Text color="textSecondary" fontWeight="bold" fontSize="subheading">
+              Sign up
+            </Text>
+          </Link>
+        )}
         {isSignedIn ? (
           <Pressable onPress={handleSignOut} style={styles.lastLink}>
             <Text color="textSecondary" fontWeight="bold" fontSize="subheading">
